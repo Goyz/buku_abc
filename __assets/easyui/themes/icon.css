@@ -1,0 +1,216 @@
+.icon-blank{
+	background:url('icons/blank.gif') no-repeat center center;
+}
+.icon-add{
+	background:url('icons/edit_add.png') no-repeat center center;
+}
+.icon-edit{
+	background:url('icons/pencil.png') no-repeat center center;
+}
+.icon-clear{
+	background:url('icons/clear.png') no-repeat center center;
+}
+.icon-remove{
+	background:url('icons/edit_remove.png') no-repeat center center;
+}
+.icon-save{
+	background:url('icons/filesave.png') no-repeat center center;
+}
+.icon-cut{
+	background:url('icons/cut.png') no-repeat center center;
+}
+.icon-ok{
+	background:url('icons/ok.png') no-repeat center center;
+}
+.icon-no{
+	background:url('icons/no.png') no-repeat center center;
+}
+.icon-cancel{
+	background:url('icons/cancel.png') no-repeat center center;
+}
+.icon-reload{
+	background:url('icons/reload.png') no-repeat center center;
+}
+.icon-search{
+	background:url('icons/search.png') no-repeat center center;
+}
+.icon-print{
+	background:url('icons/print.png') no-repeat center center;
+}
+.icon-help{
+	background:url('icons/help.png') no-repeat center center;
+}
+.icon-undo{
+	background:url('icons/undo.png') no-repeat center center;
+}
+.icon-redo{
+	background:url('icons/redo.png') no-repeat center center;
+}
+.icon-back{
+	background:url('icons/back.png') no-repeat center center;
+}
+.icon-sum{
+	background:url('icons/sum.png') no-repeat center center;
+}
+.icon-tip{
+	background:url('icons/tip.png') no-repeat center center;
+}
+.icon-filter{
+	background:url('icons/filter.png') no-repeat center center;
+}
+.icon-man{
+	background:url('icons/man.png') no-repeat center center;
+}
+.icon-lock{
+	background:url('icons/lock.png') no-repeat center center;
+}
+.icon-calculator_add{
+	background:url('icons/calculator_add.png') no-repeat center center;
+}
+
+.icon-group{
+	background:url('icons/group.png') no-repeat center center;
+}
+
+.icon-laporan{
+	background:url('icons/report_go.png') no-repeat center center;
+}
+.icon-bank{
+	background:url('icons/bank.png') no-repeat center center;
+}
+.icon-mini-add{
+	background:url('icons/mini_add.png') no-repeat center center;
+}
+.icon-mini-edit{
+	background:url('icons/mini_edit.png') no-repeat center center;
+}
+.icon-mini-refresh{
+	background:url('icons/mini_refresh.png') no-repeat center center;
+}
+.icon-large-picture{
+	background:url('icons/large_picture.png') no-repeat center center;
+}
+.icon-large-clipart{
+	background:url('icons/large_clipart.png') no-repeat center center;
+}
+.icon-large-shapes{
+	background:url('icons/large_shapes.png') no-repeat center center;
+}
+.icon-large-smartart{
+	background:url('icons/large_smartart.png') no-repeat center center;
+}
+.icon-large-chart{
+	background:url('icons/large_chart.png') no-repeat center center;
+}
+.icon-group_key{
+	background:url('icons/group_key.png') no-repeat center center;
+}
+.icon-jabatan{
+	background:url('icons/award_star_bronze_3.png') no-repeat center center;
+}
+.icon-tahun-pajak{
+	background:url('icons/date_add.png') no-repeat center center;
+}
+.icon-target-pajak{
+	background:url('icons/tax.png') no-repeat center center;
+}
+.database{
+	background:url('icons/database.png') no-repeat center center;
+}.owner{
+	background:url('icons/owner.png') no-repeat center center;
+}
+.wpajak{
+	background:url('icons/wpajak.png') no-repeat center center;
+}
+.wpungut{
+	background:url('icons/wpungut.png') no-repeat center center;
+}
+.pbb-kb{
+	background:url('icons/pbb-kb.png') no-repeat center center;
+}
+.pbb-kb-pertamina{
+	background:url('icons/pbb-kb-pertamina.png') no-repeat center center;
+}
+.fuel{
+	background:url('icons/fuel.png') no-repeat center center;
+}
+.icon-download{
+	background:url('icons/download.png') no-repeat center center;
+}
+.provinsi{
+	background:url('icons/zone.png') no-repeat center center;
+}
+.kabupaten{
+	background:url('icons/zones.png') no-repeat center center;
+}
+.perusahaan{
+	background:url('icons/ieframe_17363_6_16x16x32.png') no-repeat center center;
+}
+.tingkat_daerah{
+	background:url('icons/devmgr_43_6_16x16x32.png') no-repeat center center;
+}
+.Realisasi_PBB_KB{
+	background:url('icons/application_view_tile.png') no-repeat center center;
+}
+.Target_Pajak_APBD{
+	background:url('icons/chart16.png') no-repeat center center;
+}
+.Target_Pajak_APBDP{
+	background:url('icons/chart_bar.png') no-repeat center center;
+}
+.log_out{
+	background:url('icons/logout.png') no-repeat center center;
+}
+.data_proses{
+	background:url('icons/cog_go.png') no-repeat center center;
+}
+.data_cost{
+	background:url('icons/money.png') no-repeat center center;
+}
+.dashboard{
+	background:url('icons/application_view_tile.png') no-repeat center center;
+}
+.arrow_undo{
+	background:url('icons/arrow_undo.png') no-repeat center center;
+}
+.arrow_redo{
+	background:url('icons/arrow_redo.png') no-repeat center center;
+}
+.arrow_up{
+	background:url('icons/arrow_up.png') no-repeat center center;
+}
+.arrow_down{
+	background:url('icons/arrow_down.png') no-repeat center center;
+}
+
+
+.home_chart{
+	background:url('icons/home-chart.png') no-repeat center center;
+}
+
+.modelling{
+	background:url('icons/modelling.png') no-repeat center center;
+}
+
+.resource{
+	background:url('icons/resource.png') no-repeat center center;
+}
+
+.activity{
+	background:url('icons/activity.png') no-repeat center center;
+}
+
+.cost_object{
+	background:url('icons/cost_object.png') no-repeat center center;
+}
+
+.report{
+	background:url('icons/report.png') no-repeat center center;
+}
+.duplicate{
+	background:url('icons/duplicate.png') no-repeat center center;
+}
+
+
+
+
