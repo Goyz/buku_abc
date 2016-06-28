@@ -1,0 +1,55 @@
+<div id="{$id_na|default:''}_{$acak}" class="col-sm-12" >Pilih File</div>
+<script>
+var uploadObj_{$id_na}_{$acak};	
+$(document).ready(function(){
+	var sts=0;
+	$(".validasi").validatebox({ required:true }); 
+
+var settings = {
+		url:host+'{$url|default:"upload/materi"}',
+		method: "POST",
+		allowedTypes:"mp4",
+		acceptFiles:'.mp4',
+		//maxFileSize:26100000,
+		fileName: "file_materi",
+		multiple: false,
+		autoSubmit:false,
+		showStatusAfterSuccess:true,
+		dragDropStr: "<span><b>Upload Video/File Materi</b></span>",
+		abortStr:"Gagal",
+		cancelStr:"Batal",
+		doneStr:"OK",
+		multiDragErrorStr: "Plusieurs Drag & Drop de fichiers ne sont pas autorisés.",
+		extErrorStr:"Format Video Salah Harus ",
+		sizeErrorStr:"Ukuran File Max ",
+		uploadErrorStr:"uploaderror",
+		onSuccess:function(files,data,xhr)
+		{
+			if(parseInt(data)==1){
+				upl_vid=upl_vid+parseInt(data);
+				if(upl_vid==jml_vid){
+					winLoadingClose();
+					$('#form_vid_{$acak}').hide();
+					$('#prev_{$acak}').show();
+					//$('#selesai_{$acak}').linkbutton('enable');
+					//$('#selesai_{$acak}').linkbutton({ text:'Video Sudah TerUpload' });
+					$('#prev_{$acak}').addClass('loading').html('');
+					$.post(host+'preview',{ id_mat:id_materi,mod:'{$mod|default:"materi"}' },function(r){
+						$('#prev_{$acak}').removeClass('loading').html(r);
+					});
+				
+				}
+			}
+			console.log(data);
+			//$("#status").html("<font color='green'>Upload is success</font>");
+	 
+		},
+		onError: function(files,status,errMsg)
+		{       
+			$("#status").html("<font color='red'>Upload is Failed</font>");
+		}
+	}
+	uploadObj_{$id_na}_{$acak}=$("#{$id_na|default:''}_{$acak}").uploadFile(settings);
+});
+
+</script>

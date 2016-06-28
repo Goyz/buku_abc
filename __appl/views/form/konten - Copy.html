@@ -1,0 +1,169 @@
+<fieldset>
+	<legend>Form Konten Materi</legend>
+	<form id="form_mata_pelajaran_{$acak}" method="post" class="form-horizontal" url="{$host}simpan/tbl_konten_materi/{$sts|default:'add'}">
+		<input type="hidden" name="id" id="id_{$acak}" value="{$data.materi.id|default:''}">
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-3 control-label">Materi</label>
+			<div class="col-sm-8">
+			{if $sts eq 'add'}
+			  <select name="tbl_sub_bab_id" id="tbl_sub_bab_id{$acak}" class="form-control validasi" >
+				{foreach from=$materi item=i}
+					<option value="{$i.id}" {if $data.materi.tbl_sub_bab_id|default:"" eq $i.id}selected{/if}>{$i.judul_sub_bab}</option>
+				{/foreach}
+			</select>
+			{else}
+				<div class="checkbox">
+					<label>{$data.materi.judul_sub_bab|default:''}</label>
+				</div>
+			{/if}
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-3 control-label">Isi Konten Materi</label>
+			<div class="col-sm-8">
+			{include file="template/editor.html" id="isi_konten_{$acak}" name="isi_konten" value="{$data.materi.isi_konten|default:''}" class="validasi"} 
+			 <!--input type="text" class="form-control" name="isi_konten" id="isi_konten_{$acak}" value="{$data.nama_pelajaran|default:''}" -->
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-3 control-label">Di Buat Oleh</label>
+			<div class="col-sm-8">
+				<div class="checkbox">
+					<label>{$auth.nama_user}</label>
+				</div>
+			</div>
+		</div>	
+		{include file="template/button.html" text="Upload Video" id="simpan_{$acak}" icon="save"}
+		{include file="template/button.html" text="Kembali Ke Grid" id="cancel_{$acak}" icon="cancel"}
+		
+	</form>
+</fieldset>
+<fieldset>
+	<form id="form_video" method="post" class="form-horizontal" url="{$host}simpan/tbl_konten_materi/{$sts|default:'add'}">
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-3 control-label">Type Upload</label>
+			<div class="col-sm-8">
+				<div class="checkbox">
+				<label>
+				  <input type="radio" name="flag" id="flag" value="U" {if $sts eq 'add'}checked{else}{if $data.materi.flag neq 'Y'}checked{/if}{/if} onclick="$('#filena_{$acak}').show();$('#embedna_{$acak}').hide();">&nbsp;Upload
+				</label>
+				<label>
+				<input type="radio" name="flag" id="flag" value="Y" {if $sts eq 'edit'}{if $data.materi.flag|default:'' neq 'U'}checked{/if}{/if} onclick="$('#filena_{$acak}').hide();$('#embedna_{$acak}').show();">&nbsp;Embed Dari Youtube
+				</label>
+				</div>
+			 <!--input type="text" class="form-control" name="isi_konten" id="isi_konten_{$acak}" value="{$data.nama_pelajaran|default:''}" -->
+			</div>
+		</div>
+		<div class="form-group" id="filena_{$acak}" style="{if $data.materi.flag|default:'' eq 'Y'}display:none;{/if}">
+			<label for="inputEmail3" class="col-sm-3 control-label">File Materi</label>
+			<div class="col-sm-8">
+				{include file="template/upload.html"}<br>
+				{if $sts eq 'edit'}
+				{if $data.materi.flag|default:'' eq 'U'}
+				File Exist: <br>
+				{foreach from=$data.file item=i}
+				<span id="list_{$i.id}">{$i.file_materi}&nbsp; {include file="template/button.html" text="Hapus File" data="{$i.id}" click="hapus_file('konten',{$i.id})" id="hapus_{$i.id}_{$acak}" icon="remove"}</span><br>
+				{/foreach}
+				{/if}
+				{/if}
+				<!--a id="upload_na" href="javascript:void(0)" class="col-sm-12">Uploadss</a-->
+			</div>
+		</div>
+		<div class="form-group" style="{if $data.materi.flag|default:'' neq 'Y'}display:none;{/if}" id="embedna_{$acak}">
+			<label for="inputEmail3" class="col-sm-3 control-label">Embed Url From Youtube</label>
+			<div class="col-sm-8">
+			 <input type="text" class="form-control" name="embed_url" id="embed_url_{$acak}" value="{$data.file.0.embed_url|default:''}" >
+			</div>
+		</div>
+		{include file="template/button.html" text="Selesai" id="selesai_{$acak}" icon="save"}
+		{include file="template/button.html" text="Kembali Ke Grid" id="cancell_{$acak}" icon="cancel"}
+	</form>
+</fieldset>
+<script>
+var uploadObj;	
+$(document).ready(function(){
+	var sts=0;
+	$(".validasi").validatebox({ required:true }); 
+
+var settings = {
+		url:host+"upload/materi",
+		method: "POST",
+		allowedTypes:"mp4",
+		acceptFiles:'.mp4',
+		maxFileSize:26100000,
+		fileName: "file_materi",
+		multiple: true,
+		autoSubmit:false,
+		showStatusAfterSuccess:true,
+		dragDropStr: "<span><b>Upload Video/File Materi</b></span>",
+		abortStr:"Gagal",
+		cancelStr:"Batal",
+		doneStr:"OK",
+		multiDragErrorStr: "Plusieurs Drag & Drop de fichiers ne sont pas autorisés.",
+		extErrorStr:"Format Video Salah Harus ",
+		sizeErrorStr:"Ukuran File Max ",
+		uploadErrorStr:"uploaderror",
+		onSuccess:function(files,data,xhr)
+		{
+			if(parseInt(data)==1){
+				sts=sts+parseInt(data);
+				if(sts==uploadObj.getFileCount()){ 
+					console.log('ok'); 
+					$.messager.alert('Bimbel',"Data Konten Materi Tersimpan",'info');
+					$('#cancel_{$acak}').trigger('click');
+					grid_nya.datagrid('reload');
+				}
+			}
+			//$("#status").html("<font color='green'>Upload is success</font>");
+	 
+		},
+		onError: function(files,status,errMsg)
+		{       
+			$("#status").html("<font color='red'>Upload is Failed</font>");
+		}
+	}
+	uploadObj=$("#fileuploader_{$acak}").uploadFile(settings);
+});
+	
+	$('#cancel_{$acak}').bind('click',function(){
+		tinyMCE.get("isi_konten_{$acak}").save();
+		$('#grid_nya_{$mod}').show();
+		$('#detil_nya_{$mod}').hide();
+	});
+	$('#simpan_{$acak}').bind('click',function(){
+		//uploadObj.startUpload();
+		tinyMCE.get("isi_konten_{$acak}").save();
+		if ($('#form_mata_pelajaran_{$acak}').form('validate')){
+			submit_form('form_mata_pelajaran_{$acak}',function(r){
+				console.log(r);
+				//console.log($('#isi_konten_{$acak}').val());
+				var js=JSON.parse(r);
+				console.log(js);
+				if(js.msg==1){
+					if(uploadObj.getFileCount() > 0){
+						uploadObj.update({ dynamicFormData:function()
+						{
+							var data ={ id_materi:js.id,flag:$("input[name='flag']:checked").val() }
+							return data;
+						} 
+						});
+						uploadObj.startUpload();
+					}
+					else{
+						$.messager.alert('Bimbel',"Data Konten Materi Tersimpan",'info');
+						$('#cancel_{$acak}').trigger('click');
+						grid_nya.datagrid('reload');
+					}
+					
+				}else{
+					console.log(js);
+					$.messager.alert('Bimbel',"Tdak Dapat Menyimpan Data",'error');
+				}
+			});
+		}else{
+			$.messager.alert('Bimbel',"Isi Data Yang Kosong ",'info');
+		}
+		
+	});
+</script>

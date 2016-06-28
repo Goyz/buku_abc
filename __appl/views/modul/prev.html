@@ -1,0 +1,77 @@
+<fieldset>
+	<legend>Step 3 Upload Cover Video </legend>
+{foreach from=$vid item=i}
+<div class="row" style="margin-bottom:10px;">
+	
+	<div style="padding-left:16px;" class="col-sm-5">
+		<div class="full-width-video-wrap embed-responsive embed-responsive-16by9">
+			<video id="vid_{$i.id}" width="640" height="360" preload controls onclick="hitung_waktu()">
+				<source src="__repository/{if $modul eq 'materi'}file_materi{else}bank_soal{/if}/{$i.create_by}/{$i.file_materi}#t=20" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+				<source src="__repository/{if $modul eq 'materi'}file_materi{else}bank_soal{/if}/{$i.create_by}/{$i.file_materi}#t=20" type='video/ogg; codecs="theora, vorbis"' />
+				<source src="__repository/{if $modul eq 'materi'}file_materi{else}bank_soal{/if}/{$i.create_by}/{$i.file_materi}#t=20" type='video/webm; codecs="vp8, vorbis"' />
+			</video>
+		</div>
+	</div>
+	<div style="padding-left:16px;" class="col-sm-2">
+		<center>
+		<a href="javascript:void(0);" class="scren btn btn-small" data='{$i.id}'>Screnn Shottt</a>
+		</center>
+	</div>
+	<div style="padding-left:16px;" class="col-sm-5">
+		<canvas style="width:100%;border:2px solid #000099;height:280px" data='{$i.id}' class="canvas_{$acak}" id="can_{$i.id}">Sorry, no canvas available</canvas>
+	</div>
+	
+</div>
+{/foreach}
+</fieldset>
+{include file="template/button.html" text="Simpan Screnn Shot" id="simpan_screnn_{$acak}" icon="save"}
+
+<script>
+	var data={};
+	data['modul']='{$modul|default:"materi"}';
+	data['data']={};
+	data['data']["img"]={};
+	$('.scren').linkbutton();
+	$('.scren').bind('click',function(){
+		var data_na=$(this).attr('data');
+		var v=$("#vid_"+data_na)[0];
+		var c = $("#can_"+data_na)[0];
+		var ctx = c.getContext("2d");
+		var cw = Math.floor(c.clientWidth - 200);
+		var ch = Math.floor(c.clientHeight - 120);
+
+		//v.play();
+		v.pause();
+		ctx.drawImage(v,0,0,cw,ch);	
+		ctx.font = "30px Arial";
+		ctx.fillText("This is a sample text",170,170);
+		//var dataURL = c.toDataURL();
+		data['data']['img'][data_na]=c.toDataURL();
+		
+		
+	});
+	$('#simpan_screnn_{$acak}').bind('click',function(){
+		if(Object.keys(data['data']['img']).length > 0){
+			$.post(host+'upload/cover',data,function(r){
+				console.log( r );
+				if(r==1){
+					{if $modul eq 'materi'}
+					$.messager.alert('Bimbel',"Data Seluruh Konten Materi Tersimpan",'info');
+					$('#grid_nya_konten').show();
+					$('#detil_nya_konten').hide();
+					{else}
+					$.messager.alert('Bimbel',"Data Seluruh Bank Soal Tersimpan",'info');
+					$('#grid_nya_{$modul}').show();
+					$('#detil_nya_{$modul}').hide();
+					{/if}
+					grid_nya.datagrid('reload');
+					
+				}else{
+					$.messager.alert('Bimbel',"Tidak Dapat Menyimpan Cover",'error');
+				}
+			});
+		}else{
+			$.messager.alert('Bimbel',"Silah Kan ScreenShot Video Anda",'error');
+		}
+	});
+</script>

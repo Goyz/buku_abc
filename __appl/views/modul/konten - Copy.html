@@ -1,0 +1,65 @@
+<html>
+<head></head>
+<body>
+<h2 class="course-title"><a href="#">{$konten.konten.judul_sub_bab|default:''}</a></h2>
+<h5 ><a href="#">Oleh Guru Pengajar : {$konten.konten.create_by|upper}</a></h5>
+{if !empty($konten.konten)}
+{$konten.konten.isi_konten|default:''}
+
+<!--a href="javascript:void(0);" class="estut-btn active submit" onclick="$('#materi_na').show();$('#konten_na').hide();"> Kembali Ke Materi</a-->
+<a href="javascript:void(0);" class="estut-btn active submit" > Bank Soal</a>
+<br>
+<br>
+<div class="single-blog bg-white fix"  id="video_na">
+	<div class="blog-thumb">
+		
+	</div>
+	<div class="blog-info text-left">
+		<span class="blog-category c-social">Video</span>
+		<h3 class="blog-title"><a href="#">Materi Video</a></h3>
+		<div class="blog-post-dlc">
+			<span id="waktu_na"><time>00:00:00</time></span>
+		</div>
+		{foreach from=$konten.file item=i}
+		{if $i.flag eq 'Y'}
+		<div class="row">
+			<div style="padding-left:16px;">
+				<div class="full-width-video-wrap embed-responsive embed-responsive-16by9">
+					<iframe src="{$i.embed_url}" allowfullscreen onclick="hitung_waktu()"></iframe>
+				</div>
+			</div>
+		</div>
+		{else}
+		<div class="row" style="margin-bottom:10px;">
+			<div style="padding-left:16px;">
+				<div class="full-width-video-wrap embed-responsive embed-responsive-16by9">
+					<video id="sampleMovie" width="640" height="360" preload controls onclick="hitung_waktu()">
+						<source src="__repository/file_materi/{$i.create_by}/{$i.file_materi}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+						<source src="__repository/file_materi/{$i.create_by}/{$i.file_materi}" type='video/ogg; codecs="theora, vorbis"' />
+						<source src="__repository/file_materi/{$i.create_by}/{$i.file_materi}" type='video/webm; codecs="vp8, vorbis"' />
+					</video>
+				</div>
+			</div>
+		</div>
+		{/if}
+		{/foreach}
+	</div>
+</div>
+</body>
+</html>
+<script>
+$(window).bind("beforeunload", function() { 
+    return confirm("Do you really want to close?"); 
+})
+</script>
+{else}
+	<div class="blog-info text-left">
+		<span class="blog-category c-social"></span>
+		<h3 class="blog-title"><a href="#">TIDAK ADA KONTEN MATERI UNTUK PELAJARAN MATERI INI/ ADMIN BELUM INPUT DATA KONTEN</a></h3>
+		<div class="blog-post-dlc">
+			
+		</div>
+	</div>
+	<a href="javascript:void(0);" class="estut-btn active submit" onclick="$('#materi_na').show();$('#konten_na').hide();"> Kembali Ke Materi</a>
+	<a href="javascript:void(0);" style="float:right;" class="estut-btn active submit" > Bank Soal</a>
+{/if}

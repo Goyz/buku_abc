@@ -1,0 +1,17 @@
+<div style='margin-top:3px;border: 1px solid #48A2CA;'>
+			<table width='100%'>
+				<tr>		
+					<td width="20%">&nbsp;</td>
+					<td>
+						<table width='100%'>
+							<tr>
+								<td width='25%'><b>TOTAL {if $mod eq 'from_employees'}FTE{else}PROPORTION{/if}</b></td>
+								<td width='25%'><b><span id='total_persen_{$mod}'>{if $mod eq 'from_employees'}{$total_persen/100|default:0}{else}{$total_persen|default:0}{/if}</span></b></td>
+								<td width='25%'><b>TOTAL COST</b></td>
+								<td width='25%'><b>Rp. <span id='total_cost_{$mod}'>{$total_cost|default:0}</span></b></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>    

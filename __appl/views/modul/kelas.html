@@ -1,0 +1,37 @@
+{if $auth.cl_user_group_id|default:'' eq 3}
+	{include file="template/tab.html" }
+{else}
+<div class="row" style="margin-right:0px;margin-left:0px;">
+	<div class="col-md-12" style="padding:10px;">
+		
+			
+				<div class="blog-post-inner blog-large-image">
+					<!--Start Single Blog  -->
+					<div class="single-blog bg-white fix">
+						<div class="blog-thumb">
+							
+						</div>
+					<div class="blog-info text-left">
+						<span class="blog-category c-social">Selamat Datang</span>
+						<h3 class="blog-title"><a href="#">{$auth.group_user|default:''}</a></h3>
+						
+						<div class="row">
+							<div style="padding-left:16px;">
+							<p class="blog-content" id="isi_na" >
+								
+							</p>
+							</div>
+							<div class="load-more-btn" style="display:none;">
+								<a href="#" class="estut-btn">Read more</a>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			
+	</div>
+</div>
+{/if}
+				<!-- End Small image blog Post area -->
+
+				

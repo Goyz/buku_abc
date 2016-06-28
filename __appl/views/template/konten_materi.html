@@ -1,0 +1,39 @@
+<div style="width:100%;height:500px;" id="lay_{$acak}">
+	<div data-options="region:'west',split:true" title="Definisi Bab" style="width:250px;">
+		<div id="tree_{$acak}"></div>
+	</div>
+	<div data-options="region:'center',title:'KONTEN'">
+		<div id="isi_{$acak}" style="padding:20px;" class="isi_konten">
+			<div class="administrator-info">
+				<div class="administrator-avatar">
+					<img alt="administrator" class="img-circle" src="img/logo/avatar.png">	
+				</div>
+				<div class="administrator-description">
+					<h2><a href="#">Administrator</a></h2>
+					<p>Praesent sollicitudin ac dolor eu tincidunt. Fusce a porttitor lectus. Sed eget egestas arcu. Duis tristique mattis quam, id porta dui commodo eu. Sed a dapibus orci. Integer pretium odio ac sem cursus, id ullamcorper lacus varius. In egestas molestie aliquet. Mauris tempor aliquet varius. </p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+    $('#lay_{$acak}').layout();
+	//$(function(){
+		var tree_na=$('#tree_{$acak}').tree({
+			url:host+'tree/{$modul}',
+			queryParams:{
+				pel:'{$id_pel|default:''}'
+			//	modul:'{$modul}'
+			},
+			onClick: function(node){
+				if(node.flag=='sub_bab'){
+					pilih_tree('isi_{$acak}',node.id,'{$modul}',"{$id_pel|default:0}");
+				}
+				//alert(node.flag);
+			}
+		});
+		
+		var pilih=tree_na.tree('getSelected');
+		
+	//});
+</script>

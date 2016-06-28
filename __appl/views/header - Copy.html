@@ -1,0 +1,80 @@
+<header id="header" class="solid-bg-header clear">
+				<div class="header-v1">
+					<!-- End Header Top -->
+					<!-- Start Header Bottom -->
+					<div class="header-bottom">
+						<div class="container">
+							<div class="row hidden-sm hidden-xs">
+								<!-- Start Logo -->
+								<div class="col-md-3">
+									<div class="header-logo">
+										<!--a href="index.html"><img src="img/logo/1.png" alt="main logo" /></a-->
+									</div>
+								</div>
+								<!-- End Logo -->
+								<!-- Start Main Menu -->
+                                <div class="col-md-9">
+                                    <div class="menu-wrap pull-right">
+                                        <nav class="primary-menu">
+										    <ul>
+										        <li><a href="{$host}">HOME </a></li>                                                                               
+										        <li><a href="about-us.html">PETUNJUK </a></li>       
+										       
+												{if $auth.nama_user|default:''}
+													
+													{if $auth.cl_user_group_id|default:'' eq 1 or $auth.cl_user_group_id|default:'' eq 2}
+														<li><a href="{$host}kelas">ADMIN AREA</a></li>													
+													{else}
+													<li><a href="{$host}kelas">MASUK KELAS</a></li>   	
+													{/if}
+													<li><a href="{$host}akun">AKUN</a></li>   
+													<li><a href="{$host}keluar">KELUAR</a></li>   
+												{else}
+												<li><a href="about-us.html">KONTAK KAMI</a></li>     
+												<li><a href="{$host}registrasi">DAFTAR</a></li>      
+										        <li><a href="{$host}login">MASUK</a></li>
+												{/if}
+										        
+										    </ul>
+										</nav>
+                                    </div>
+                                </div>
+                                <!-- End Main Menu -->
+							</div>
+							<div class="row">
+								<div class="col-sm-3 hidden-md hidden-lg">
+									<div class="mobile-logo">
+										<!--a href="index.html"><img src="img/logo/1.png" alt="main logo" /></a-->
+									</div>
+								</div>
+								<div class="col-sm-9 hidden-md hidden-lg">
+									<!-- Main Menu End -->
+									<div class='mobile-menu-area'>
+										<nav id="mobile-menu">
+											<ul>
+												<li><a href="{$host}">HOME </a></li>                                                                               
+										        <li><a href="about-us.html">PETUNJUK </a></li>   
+										        <li><a href="about-us.html">KONTAK KAMI</a></li>   
+												{if $auth.nama_user|default:''}
+													{if $auth.cl_user_group_id|default:'' eq 1 or $auth.cl_user_group_id|default:'' eq 2}
+														<li><a href="{$host}kelas">ADMIN AREA</a></li>													
+													{else}
+													<li><a href="{$host}kelas">MASUK KELAS</a></li>   	
+													{/if}
+													<li><a href="{$host}akun">AKUN</a></li>   
+													<li><a href="{$host}keluar">KELUAR</a></li>  
+												{else}						
+												<li><a href="{$host}registrasi">DAFTAR</a></li>      
+										        <li><a href="{$host}login">MASUK</a></li>
+												{/if}   
+											</ul>
+										</nav>
+									</div>
+									<!-- Main Menu End -->
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End Header Bottom -->
+				</div>
+			</header>

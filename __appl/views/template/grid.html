@@ -1,0 +1,94 @@
+<div id="grid_nya_{$main}" style="width:100%">
+	<div id='grid_{$main}'></div>
+	<div id='tb_{$main}' style="padding:5px;">
+		{if $filter_core|default:'' eq 'true'}
+			<div id='filter_core'>
+				<label style='width:80px;'>Filter Data</label>:
+				{if $filter_cost_center|default:'' eq 'true'}
+				<select id='cost_center_{$main}' style='width:150px;padding:3px;'>
+					<option value=''>-- Filter Cost Center --</option>
+					{$costcenter}
+				</select>				
+				&nbsp;&nbsp;
+				{/if}
+				{if $filter_tahun_bulan|default:'' eq 'true'}
+					<select id='bulan_{$main}' style='width:150px;padding:3px;'>
+						{$bulan}
+					</select>
+					&nbsp;&nbsp;&nbsp;
+					<select id='tahun_{$main}' style='width:150px;padding:3px;'>
+						{$tahun}
+					</select>
+				{/if}
+				&nbsp;&nbsp;&nbsp;
+				<a href="javascript:void(0)" style='' class="l-btn l-btn-small l-btn-plain" group="" id="" onClick="cariData('{$main}');">
+					<span class="l-btn-left l-btn-icon-left">
+						<span class="l-btn-text">Cari</span><span class="l-btn-icon icon-search">&nbsp;</span>
+					</span>
+				</a>	
+			</div>
+		{/if}
+		{if $button|default:'' eq 'true'}
+			<div id='tombol'>
+				{if $button_duplicate|default:'' eq 'true'}
+				<a href="javascript:void(0)" style='float:right;' class="l-btn l-btn-small l-btn-plain" group="" id="" onClick="genform('duplicate_costing', '{$mod}','{$main}','','');">
+					<span class="l-btn-left l-btn-icon-left">
+						<span class="l-btn-text">Duplicate Costing</span><span class="l-btn-icon duplicate">&nbsp;</span>
+					</span>
+				</a>	
+				&nbsp;			
+				{/if}
+				<a href="javascript:void(0)" style='float:right;' class="l-btn l-btn-small l-btn-plain" group="" id="" onClick="genform('delete', '{$mod}','{$main}','','{$table|default:''}');">
+					<span class="l-btn-left l-btn-icon-left">
+						<span class="l-btn-text">Hapus</span><span class="l-btn-icon icon-remove">&nbsp;</span>
+					</span>
+				</a>	
+				&nbsp;			
+				<a href="javascript:void(0)" style='float:right;' class="l-btn l-btn-small l-btn-plain" group="" id="" onClick="genform('edit', '{$mod}','{$main}');">
+					<span class="l-btn-left l-btn-icon-left">
+						<span class="l-btn-text">Edit / Detail</span><span class="l-btn-icon icon-edit">&nbsp;</span>
+					</span>
+				</a>
+				&nbsp;
+				<a href="javascript:void(0)" style='float:right;' class="l-btn l-btn-small l-btn-plain" group="" id="" onClick="genform('add', '{$mod}','{$main}');">
+					<span class="l-btn-left l-btn-icon-left">
+						<span class="l-btn-text">Tambah</span><span class="l-btn-icon icon-add">&nbsp;</span>
+					</span>
+				</a>
+				&nbsp;
+				
+			</div>
+		{/if}
+		{if $button_2|default:'' eq 'true'}
+			<div id='tombol'>
+				<a href="javascript:void(0)" style='float:right;' class="l-btn l-btn-small l-btn-plain" group="" id="" onClick="genform('delete', '{$mod}','{$main}','','');">
+					<span class="l-btn-left l-btn-icon-left">
+						<span class="l-btn-text">Hapus</span><span class="l-btn-icon icon-remove">&nbsp;</span>
+					</span>
+				</a>	
+				&nbsp;
+				<a href="javascript:void(0)" style='float:right;' class="l-btn l-btn-small l-btn-plain" group="" id="" onClick="genform('add', '{$mod}','{$main}');">
+					<span class="l-btn-left l-btn-icon-left">
+						<span class="l-btn-text">Tambah</span><span class="l-btn-icon icon-add">&nbsp;</span>
+					</span>
+				</a>
+			</div>
+		{/if}
+		{if $button_3|default:'' eq 'true'} {* Utk Saving Data via Toolbar Datagrid *}
+			<div id='tombol'>
+				<a href="javascript:void(0)" style='float:right;' class="l-btn l-btn-small l-btn-plain" group="" id="" onClick="kumpulAction('{$main}');">
+					<span class="l-btn-left l-btn-icon-left">
+						<span class="l-btn-text">Save</span><span class="l-btn-icon icon-save">&nbsp;</span>
+					</span>
+				</a>	
+			</div>
+		{/if}
+	</div>
+</div>
+<div id='detil_nya_{$main}' width='100%'></div>
+
+<script>
+	var height_grid = "{$tinggi_grid|default:''}";
+	$('#grid_nya_{$main}').css('height', (height_grid != "" ? height_grid : (getClientHeight()-280) ) );
+	genGrid('{$main}','grid_{$main}');
+</script>

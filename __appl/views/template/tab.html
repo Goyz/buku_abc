@@ -1,0 +1,31 @@
+<div  id="tab_na_{$acak}" style="height:540px;">
+{if $mod eq 'kelas'}
+	{foreach from=$pelajaran item=i}
+	<div title="{$i.nama_pelajaran}" style="padding:5px" class="isi_data_{$i.id}" data="{$i.id}"></div>
+	{/foreach}
+{else}
+	{foreach from=$tahun item=i}
+	<div title="Tahun : {$i}" style="padding:5px" class="isi_data_{$i}" data="{$i}"></div>
+	{/foreach}
+{/if}
+</div>
+<script>
+
+   var tab= $('#tab_na_{$acak}').tabs({
+        border:false,
+        fit:true,
+		onSelect: function(data){
+			var a=$(this).tabs('getSelected');
+			var idx_pel=a.attr('data');
+			//console.log(a.attr('data'));
+			$('.isi_data_'+idx_pel).addClass('loading').html('');
+			$.post(host+'layout',{ pel:idx_pel,modul:'{$mod}' },function(r){
+				$('.isi_data_'+idx_pel).removeClass('loading').html(r);
+			});
+		}
+    });
+	
+	$('#tt').tree({
+        url:'tree_data.json'
+    });
+</script>

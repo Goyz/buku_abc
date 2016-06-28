@@ -1,0 +1,14 @@
+<div class="form-group {$kelas_div|default:''}" style="{$style_div|default:''}">
+	<label for="inputEmail3" class="col-sm-3 control-label">{$label|default:''}</label>
+		<div class="col-sm-{$lebar|default:8}">
+			{if $type eq 'text'}
+				<input type="text" class="form-control {$class|default:''}" name="{$name|default:''}" id="{$id_na|default:''}{$acak}" value="{$value|default:''}" style="{$style|default:''}" >
+			{else if $type eq 'textarea'}
+				<textarea name="{$name|default:''}" id="{$id_na|default:''}{$acak}" style="height:{$tinggi|default:'100px;'}">{$value|default:''}</textarea>
+			{else if $type eq 'pwd'}
+				<input type="password" class="form-control {$class|default:''}" name="{$name|default:''}" id="{$id_na|default:''}{$acak}" value="{$value|default:''}" >
+			{/if}
+		</div>
+</div>
+
+	

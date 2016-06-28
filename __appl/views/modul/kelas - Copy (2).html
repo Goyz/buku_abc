@@ -1,0 +1,160 @@
+{if $auth.cl_user_group_id|default:'' eq 3}
+				<!-- Start Small image blog Post area -->
+				<div class="latest-blog-area blog-page bg-white-2">
+					<div  style="width:90%">
+						<div class="row" style="margin-left:10px;width:110%">
+							<!--Start Left Side -->
+							<div class="col-md-9 left-side-wrap-v1 ">
+								<div class="blog-post-inner blog-large-image">
+									<!--Start Single Blog  -->
+									<div class="single-blog bg-white fix">
+										<div class="blog-thumb">
+											
+										</div>
+										{if $auth.cl_user_group_id|default:'' eq 3}
+										<div class="blog-info text-left">
+											<span class="blog-category c-social">Selamat Datang</span>
+											<h3 class="blog-title"><a href="#">Kelas {$auth.kelas}</a></h3>
+											
+											<div class="row">
+												<div style="padding-left:16px;">
+												<p class="blog-content" id="isi_na" >
+													KUMPULAN MATERI PEMBELAJARAN
+												</p>
+												</div>
+												<div class="load-more-btn" style="display:none;">
+													<a href="#" class="estut-btn">Read more</a>
+												</div>
+											</div>
+										</div>
+										{else}
+										<div class="blog-info text-left">
+											<span class="blog-category c-social">Selamat Datang</span>
+											<h3 class="blog-title"><a href="#">{$auth.group_user|default:''}</a></h3>
+											
+											<div class="row">
+												<div style="padding-left:16px;">
+												<p class="blog-content" id="isi_na" >
+													
+												</p>
+												</div>
+												<div class="load-more-btn" style="display:none;">
+													<a href="#" class="estut-btn">Read more</a>
+												</div>
+											</div>
+										</div>
+										{/if}
+									</div>
+									
+								</div>
+								
+							</div>
+							<!--End Left Side -->
+							<!--Start Right Side -->
+							<div class="col-md-3 right-side-wrap-v1">
+								<div class="widget-wrap">
+									
+									{if $auth.cl_user_group_id|default:'' eq 3}
+									<aside class="widget widget-categories">
+										<h3 class="widget-title-v2">Mata Pelajaran Kelas {$auth.kelas}</h3>
+										<div class="widget-content">
+											<ul class="widget-menu">
+												{foreach from=$pelajaran item=i}
+												<li><a href="javascript:void(0);" onclick="pilih_tree({$i.id},'pel','{$i.nama_pelajaran}')" id="{$i.id}" >{$i.nama_pelajaran}</a></li>
+												{/foreach}
+												
+											</ul>
+										</div>
+									</aside>
+									<aside class="widget widget-recent-post">
+										<h3 class="widget-title-v2">Bank Soal</h3>
+										<div class="widget-content">
+											<ul class="widget-menu">
+												<li><a href="javascript:void(0);" class="pilih">UN (Ujian Nasional)</a></li>
+												<li><a href="javascript:void(0);" class="pilih">SBMPTN</a></li>
+												
+											</ul>
+										</div>
+									</aside>
+									{else}
+										<aside class="widget widget-categories">
+											<h3 class="widget-title-v2">Data Referensi Materi</h3>
+											<div class="widget-content">
+												<ul class="widget-menu">													
+													<li><a href="javascript:void(0);" onclick="loadUrl(this,'{$host}grid/mata_pelajaran/cl_mata_pelajaran')" id="" >Data Mata Pelajaran</a></li>													
+													<li><a href="javascript:void(0);" onclick="loadUrl(this,'{$host}grid/bab/tbl_bab_pelajaran')" id="" >Data BAB Pelajaran</a></li>													
+													<li><a href="javascript:void(0);" onclick="loadUrl(this,'{$host}grid/sub_bab/tbl_sub_bab_pelajaran')" id="" >Data SUB BAB Pelajaran</a></li>													
+													<li><a href="javascript:void(0);" onclick="loadUrl(this,'{$host}grid/materi/tbl_materi')" id="" >Data Materi Pelajaran</a></li>													
+													<li><a href="javascript:void(0);" onclick="loadUrl(this,'{$host}grid/konten/tbl_konten_materi')" id="" >Data Konten Pelajaran</a></li>													
+												
+												</ul>
+											</div>
+										</aside>
+										<aside class="widget widget-categories">
+											<h3 class="widget-title-v2">Data Bank Soal & Ujian</h3>
+											<div class="widget-content">
+												<ul class="widget-menu">													
+													<li><a href="javascript:void(0);" onclick="" id="" >Data Bank Soal</a></li>													
+													<li><a href="javascript:void(0);" onclick="" id="" >Data Ujian</a></li>													
+													
+												
+												</ul>
+											</div>
+										</aside>
+										{if $auth.cl_user_group_id|default:'' eq 1}
+										
+										<aside class="widget widget-categories">
+											<h3 class="widget-title-v2">Setting & Referensi</h3>
+											<div class="widget-content">
+												<ul class="widget-menu">													
+													<!--li><a href="javascript:void(0);" onclick="loadUrl(this,'{$host}grid/mata_pelajaran/cl_mata_pelajaran')" id="" >User Management</a></li-->													
+													<li><a href="javascript:void(0);" onclick="loadUrl(this,'{$host}grid/kelas/cl_kelas')" id="" >Data Kelas</a></li>													
+													<li><a href="javascript:void(0);" onclick="loadUrl(this,'{$host}grid/peserta/cl_peserta')" id="" >Data Peserta</a></li>													
+													<li><a href="javascript:void(0);" onclick="loadUrl(this,'{$host}grid/guru/cl_guru')" id="" >Data Guru</a></li>													
+													
+												</ul>
+											</div>
+										</aside>
+										{/if}
+									{/if}
+								</div>
+							</div>
+							<!--End Right Side -->
+						</div>
+					</div>
+				</div>
+{else}
+<div class="row" style="margin-right:0px;margin-left:0px;">
+	<div class="col-md-12" style="padding:10px;">
+		
+			
+				<div class="blog-post-inner blog-large-image">
+					<!--Start Single Blog  -->
+					<div class="single-blog bg-white fix">
+						<div class="blog-thumb">
+							
+						</div>
+					<div class="blog-info text-left">
+						<span class="blog-category c-social">Selamat Datang</span>
+						<h3 class="blog-title"><a href="#">{$auth.group_user|default:''}</a></h3>
+						
+						<div class="row">
+							<div style="padding-left:16px;">
+							<p class="blog-content" id="isi_na" >
+								
+							</p>
+							</div>
+							<div class="load-more-btn" style="display:none;">
+								<a href="#" class="estut-btn">Read more</a>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			
+	</div>
+</div>
+{/if}
+				<!-- End Small image blog Post area -->
+
+				

@@ -1,0 +1,22 @@
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    {$judul|default:''}
+  </a>
+  {foreach from=$sub_bab item=i}
+  <a href="javascript:void(0);" class="list-group-item sub_bab" judul="{$i.judul_sub_bab}" id_sub_bab="{$i.id}">{$i.judul_sub_bab|default:''}</a>
+  {/foreach}
+</div>
+
+	<a href="javascript:void(0);" class="estut-btn active submit" onclick="$('#bab_na').show();$('#sub_bab_na').hide();"> Kembali Ke Bab</a>
+
+<script>
+	$('.sub_bab').click(function(){
+		$('#bab_na').hide();
+		$('#sub_bab_na').hide();
+		$('#materi_na').show();
+		$('#materi_na').addClass('loading').html('');
+		$.post(host+'materi',{ id_sub_bab:$(this).attr('id_sub_bab'),judul:$(this).attr('judul') },function(r){
+			$('#materi_na').html(r).removeClass('loading');;
+		});
+	})
+</script>
